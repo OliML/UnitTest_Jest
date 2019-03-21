@@ -63,3 +63,27 @@ describe('Includes', function () {
         },
     );
 });
+
+describe('Union', function () {
+
+    const interval = new Interval(1, 5);
+
+    test.each([
+        [new Interval(6, 10), [new Interval(1,5), new Interval(6,10)]],
+        [new Interval(-5, 0), [new Interval(-5,0), new Interval(1,5)]],
+        [new Interval(4, 8), [new Interval(1,8)]],
+        [new Interval(0, 4), [new Interval(0,5)]],
+        [new Interval(2, 4), [new Interval(1,5)]],
+        [new Interval(-1, 8), [new Interval(-1,8)]],
+        [new Interval(-2, 1), [new Interval(-2,5)]],
+        [new Interval(5, 10), [new Interval(1,10)]],
+        [new Interval(1, 5), [new Interval(1,5)]],
+        [new Interval(1, 1), [new Interval(1,5)]],
+        [new Interval(5, 5), [new Interval(1,5)]]
+    ])(
+        'union',
+        (n, expected) => {
+            expect(interval.union(n)).toEqual(expected);
+        },
+    );
+});
