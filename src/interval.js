@@ -115,7 +115,18 @@ class Interval {
      * @returns {Interval[]}
      */
     exclusion(interval) {
+        const intersect = this.intersection(interval);
 
+        if(this.start === interval.start && this.end === interval.end)
+            return [];
+        else if (intersect === null){
+            return this.union(interval);
+        }else{
+            return [
+                new Interval(Math.min(this.start, interval.start), intersect.start),
+                new Interval(intersect.end, Math.max(this.end, interval.end)),
+            ];
+        }
     };
 }
 
