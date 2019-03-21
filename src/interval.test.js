@@ -87,3 +87,27 @@ describe('Union', function () {
         },
     );
 });
+
+describe('Intersection', function () {
+
+    const interval = new Interval(1, 5);
+
+    test.each([
+        [new Interval(6, 10), null],
+        [new Interval(-5, 0), null],
+        [new Interval(4, 8), new Interval(4,5)],
+        [new Interval(0, 4), new Interval(1,4)],
+        [new Interval(2, 4), new Interval(2,4)],
+        [new Interval(-1, 8), new Interval(1,5)],
+        [new Interval(-2, 1), new Interval(1,1)],
+        [new Interval(5, 10), new Interval(5,5)],
+        [new Interval(1, 5), new Interval(1,5)],
+        [new Interval(1, 1), new Interval(1,1)],
+        [new Interval(5, 5), new Interval(5,5)]
+    ])(
+        'intersection',
+        (n, expected) => {
+            expect(interval.intersection(n)).toEqual(expected);
+        },
+    );
+});
