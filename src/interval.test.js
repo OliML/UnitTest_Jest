@@ -29,7 +29,9 @@ describe('Overlaps', function () {
         [new Interval(-1, 8), true],
         [new Interval(-2, 1), false],
         [new Interval(5, 10), false],
-        [new Interval(1, 5), true]
+        [new Interval(1, 5), true],
+        [new Interval(1, 1), false],
+        [new Interval(5, 5), false]
     ])(
         'overlaps',
         (n, expected) => {
