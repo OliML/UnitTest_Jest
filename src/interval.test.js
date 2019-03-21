@@ -1,5 +1,21 @@
 const Interval = require('./interval');
 
+describe('Constructor', function () {
+
+    test('Constructor throws exception', () => {
+        expect(() => {
+            new Interval(10, 5);
+        }).toThrow();
+    });
+
+    test('Constructor Ok', () => {
+        expect(() => {
+            new Interval(5, 10);
+        }).not.toThrow();
+    })
+
+});
+
 describe('Overlaps', function () {
 
     const interval = new Interval(1, 5);
