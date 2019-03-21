@@ -29,11 +29,37 @@ describe('Overlaps', function () {
         [new Interval(-1, 8), true],
         [new Interval(-2, 1), false],
         [new Interval(5, 10), false],
-        [new Interval(1, 5), true]
+        [new Interval(1, 5), true],
+        [new Interval(1, 1), false],
+        [new Interval(5, 5), false]
     ])(
         'overlaps',
         (n, expected) => {
             expect(interval.overlaps(n)).toBe(expected);
+        },
+    );
+});
+
+describe('Includes', function () {
+
+    const interval = new Interval(1, 5);
+
+    test.each([
+        [new Interval(6, 10), false],
+        [new Interval(-5, 0), false],
+        [new Interval(4, 8), false],
+        [new Interval(0, 4), false],
+        [new Interval(2, 4), true],
+        [new Interval(-1, 8), false],
+        [new Interval(-2, 1), false],
+        [new Interval(5, 10), false],
+        [new Interval(1, 5), true],
+        [new Interval(1, 1), true],
+        [new Interval(5, 5), true]
+    ])(
+        'includes',
+        (n, expected) => {
+            expect(interval.includes(n)).toBe(expected);
         },
     );
 });
