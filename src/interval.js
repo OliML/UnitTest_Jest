@@ -1,5 +1,9 @@
 class Interval {
     constructor(start, end) {
+        if(start > end) {
+            throw ('start > end');
+        }
+
         this.start = start;
         this.end = end
     }
