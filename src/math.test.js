@@ -21,6 +21,18 @@ describe('Factorial', function () {
             Util.factorial(-10)
         }).toThrow();
     })
+
+    test('Factorial of number > 100', () =>{
+        expect(() => {
+            Util.factorial(101)
+        }).toThrow();
+    })
+
+    test('Factorial of not a number', () =>{
+        expect(() => {
+            Util.factorial('Olivier')
+        }).toThrow();
+    })
 });
 
 describe('is Prime', function () {

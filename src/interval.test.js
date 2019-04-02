@@ -16,6 +16,14 @@ describe('Constructor', function () {
 
 });
 
+describe('To String', function () {
+
+    const interval = new Interval(1, 5);
+    test('toString', () => {
+        expect(interval.toString()).toEqual("[1,5]");
+    })
+});
+
 describe('Overlaps', function () {
 
     const interval = new Interval(1, 5);
